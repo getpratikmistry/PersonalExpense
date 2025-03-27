@@ -1,12 +1,13 @@
-# DailyExpense
+# PersonalExpense
 
 ## 📌 Project Overview
 
-DailyExpense is a **Single Page Application (SPA)** built with **Angular** to manage daily expenses. The application is hosted on a shared server and interacts with multiple APIs for expense tracking, user authentication, and other functionalities.
+PersonalExpense is a **Single Page Application (SPA)** built with **Angular** to manage daily expenses. The application is hosted on a shared server and interacts with multiple APIs for expense tracking, user authentication, and other functionalities.
 
 ## 🚀 Features
 
 - User authentication with `authGuard` protection
+- Responsive UI
 - Dashboard for tracking expenses
 - Ability to add, update, and delete expenses
 - Angular Routing for seamless navigation
@@ -21,8 +22,8 @@ DailyExpense is a **Single Page Application (SPA)** built with **Angular** to ma
 ### **1️⃣ Clone the Repository**
 
 ```sh
-git clone https://github.com/yourusername/dailyexpense-ui.git
-cd dailyexpense-ui
+git clone https://github.com/getpratikmistry/PersonalExpense.git
+cd PersonalExpense
 ```
 
 ### **2️⃣ Install Dependencies**
@@ -76,7 +77,7 @@ For shared hosting, ensure:
 ```apache
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /dailyexpenseui/
+  RewriteBase /PersonalExpenseui/
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^ index.html [QSA,L]
