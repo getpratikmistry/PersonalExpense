@@ -7,7 +7,8 @@ PersonalExpense is a **Single Page Application (SPA)** built with **Angular** to
 ## 🚀 Features
 
 - User authentication with `authGuard` protection
-- Responsive UI
+- Responsive UI in Angular and PrimeNG
+- Expressjs API
 - Dashboard for tracking expenses
 - Ability to add, update, and delete expenses
 - Angular Routing for seamless navigation
@@ -91,7 +92,7 @@ This project is built using the following technologies:
 - **Angular**: A platform and framework for building client-side applications with HTML, CSS, and JavaScript/TypeScript.
   - **Angular CLI**: Command-line interface for Angular for building, testing, and deploying applications.
   - **RxJS**: A library for reactive programming using Observables, for handling asynchronous events.
-  - **Angular Material**: A UI component library for Angular, following Material Design principles.
+  - **PrimeNG**: A UI component library for Angular, following Material Design principles.
   - **NgRx**: Reactive state management library for Angular, based on Redux principles.
 
 ### Styling:
@@ -103,7 +104,8 @@ This project is built using the following technologies:
 - **Karma**: Test runner for Angular applications, used to run the tests in various browsers.
 - **Protractor**: End-to-end testing framework for Angular apps.
 
-### Development Tools:
+### Back-end:
+- **Expressjs**: RESTful API implementation with N-Tier Architecture.
 - **Node.js**: JavaScript runtime environment used for running build tools and package management.
 - **npm**: Node package manager for installing and managing dependencies.
 - **TypeScript**: A superset of JavaScript, adding static typing to the language.
@@ -111,7 +113,6 @@ This project is built using the following technologies:
 - **ESLint**: Linting tool for maintaining consistent code quality and style.
 
 ### Deployment:
-- **Firebase Hosting**: Web hosting platform used for deploying the application (or replace with your preferred hosting platform).
 - **Docker**: Containerization platform (optional, if used for local or cloud deployment).
 
 ### Version Control:
