@@ -1,0 +1,19 @@
+.layout-main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem 2rem 2rem 2rem;
+    transition: margin-left 0.2s;
+}
+
+
+@media (max-width: 1200px) {
+    .layout-main-container {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    .p-paginator .p-paginator-pages .p-paginator-page {
+        min-width: 2rem;
+        height: 2rem;
+    }
+}

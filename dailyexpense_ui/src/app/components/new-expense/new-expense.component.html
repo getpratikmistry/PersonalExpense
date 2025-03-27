@@ -1,0 +1,106 @@
+<div class="grid">
+	<div class="col-12 md:col-12">		
+		<div class="card p-fluid">
+			<h2>New Expense</h2>
+			<div class="p-formgrid grid">
+				<div class="field col-12 lg:col-4">
+					<label htmlFor="name2">Date</label>
+                    <p-calendar inputId="calendar" dateFormat="yy-mm-dd" [(ngModel)]="expense.ExpenseDate" class="" [showIcon]="true" />
+				</div>
+				<div class="field col-12 lg:col-4">
+					<label htmlFor="email2">Company</label>
+                    <p-autoComplete inputId="CompanyId" [(ngModel)]="expense.CompanyName" [suggestions]="filteredCompanies" optionLabel="CompanyName"
+                    (completeMethod)="searchCompany($event);" optionValue="CompanyId" showEmptyMessage="false" (onSelect)="onCompanySelect($event)" ></p-autoComplete>
+				</div>
+				<div class="field col-12 lg:col-4">
+					<label htmlFor="name2">Location</label>
+                    <p-autoComplete [(ngModel)]="expense.Location" [suggestions]="filteredLocation" (completeMethod)="searchLocation($event);"
+                    showEmptyMessage="false"></p-autoComplete>
+				</div>
+			</div>
+			<div class="p-formgrid grid">
+				<div class="field col-6 lg:col-3">
+					<label htmlFor="name2">Tax Amount</label>
+                    <p-inputNumber [(ngModel)]="expense.TaxAmount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                    (onBlur)="calculateNetAmount()" /> 
+				</div>
+				<div class="field col-6 lg:col-3">
+					<label htmlFor="email2">Discount Amount</label>
+                    <p-inputNumber [(ngModel)]="expense.Discount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                    (onBlur)="calculateNetAmount()" /> 
+				</div>
+				<div class="field col-6 lg:col-3">
+					<label htmlFor="name2">Gross Amount</label>
+                    <p-inputNumber [(ngModel)]="expense.SubTotalAmount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                    [disabled]="true" /> 
+				</div>
+				<div class="field col-6 lg:col-3">
+					<label htmlFor="email2">Net Amount</label>
+                    <p-inputNumber [(ngModel)]="expense.NetAmount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+                    [disabled]="true" /> 
+				</div>
+			</div>
+			<div class="p-formgrid grid">
+				<div class="field col-6 sm:col-6 md:col-4 lg:col-2">
+                    <button pButton label="Save Expense" icon="pi pi-save" (click)="saveExpense($event)"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<p-toast />
+<p-confirmDialog key="dialog"></p-confirmDialog>
+<div class="card p-fluid">
+    <div class="p-formgrid grid">
+        <div class="field col-8 lg:col-4">
+            <label htmlFor="itemName">Item Name</label><br />
+            <p-autoComplete [(ngModel)]="itemName" [suggestions]="filteredItems" (completeMethod)="searchItem($event);"
+            [autofocus]="itemFocus" styleClass="uppercase"  showEmptyMessage="false"></p-autoComplete>
+        </div>
+        <div class="field col-4 lg:col-2">
+            <label htmlFor="unit">Unit</label><br />
+            <p-dropdown [options]="unitSelect" [(ngModel)]="unit" optionLabel="option" optionValue="value" placeholder="Select Unit" 
+            styleClass="itemDropdown" />
+        </div>
+        <div class="field col-6 lg:col-2">
+            <label htmlFor="portion">Portion</label><br />
+            <p-inputNumber [(ngModel)]="portion" mode="decimal" inputId="portion" [useGrouping]="false" [minFractionDigits]="3" />
+        </div>
+        <div class="field col-6 lg:col-2">
+            <label htmlFor="amount">Amount</label><br />
+            <p-inputNumber [(ngModel)]="amount" inputId="currency-us" mode="currency" currency="USD" locale="en-US" />
+        </div>
+        <div class="field col-6 lg:col">
+            <label htmlFor="btnName">&nbsp;</label><br />
+            <button pButton pRipple type="button" icon="pi pi-save" [label]="btnName" class="p-button-outlined p-button-info"  (click)="addItem()" size="small"></button>&nbsp;
+        </div>
+        <div class="field col-6 lg:col">
+            <label htmlFor="Clear">&nbsp;</label><br />
+            <button pButton pRipple type="button" icon="pi pi-undo" label="Clear" class="p-button-outlined p-button-danger" (click)="resetItemControls()" size="small"></button>
+        </div>
+    </div>
+    <p-confirmPopup key="popup"></p-confirmPopup>
+    <p-table [value]="items" styleClass="p-datatable-sm" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header" columnResizeMode="fit">
+            <tr>
+                <th class="w-4">Item</th>
+                <th class="w-2">Unit</th>
+                <th class="w-2">Portion</th>
+                <th class="w-2">Amount</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr *ngIf="item.Flag != -1">
+                <td>{{ item.Itemname }}</td>
+                <td>{{ item.UnitLabel }}</td>
+                <td>{{ item.QuantityLabel }}</td>
+                <td>{{ item.AmountLabel }}</td>
+                <td style="display: flex;">
+                    <button pButton pRipple type="button" icon="pi pi-pen-to-square" label="Edit" class="p-button-outlined p-button-info"  (click)="edit(item)" size="small"></button>
+                    &nbsp;<button pButton pRipple type="button" icon="pi pi-times" label="Delete" class="p-button-outlined p-button-danger" (click)="deleteItem($event, item)" size="small"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+/* PrimeNG */
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeng/resources/themes/lara-dark-blue/theme.css";
+@import "../node_modules/primeflex/primeflex.scss";
+@import "../node_modules/primeicons/primeicons.css";
+
+:root {
+    font-family: "Inter", sans-serif;
+    --font-family: "Inter", sans-serif;
+}
+
+.layout-wrapper {
+    margin: auto;
+    width: 80%;
+}
+
+@media (max-width: 1200px) {
+    .layout-wrapper {
+        width: 100%;
+    }
+}
+
+.p-menubar {
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.p-card {
+    border-radius: 12px;
+}
+
+html {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 14px;
+}
+
+.p-inputtext {
+    padding: 0.6rem 0.6rem;
+}
+
+.p-paginator .p-inputtext {
+    padding: 0.75rem 0.75rem;
+}
+
+.p-button.p-button-icon-only {
+    padding: 0.6rem 1.25rem;
+}
+
+.p-button {
+    padding: 0.6rem 0.6rem;
+}
+
+.card {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+}
+
+.p-autocomplete-panel .p-autocomplete-items,
+.p-dropdown-panel .p-dropdown-items {
+    padding: 0;
+}
+
+.p-confirm-popup-content {
+    padding-bottom: 0.5rem;
+}
+
+.p-confirm-popup-footer {
+    padding-top: 0.5rem;
+}
+
+.uppercase .p-inputtex {
+    text-transform: uppercase;
+}
+
+.p-menubar {
+    background: var(--surface-card) !important;
+}
+
+.p-dialog .p-dialog-header {
+    padding: 1rem;
+}
+
+.p-dialog .p-dialog-content {
+    padding: 0 1.5rem 1rem 1rem;
+}
+
+.p-dialog .p-dialog-footer button {
+    padding: 0.4rem 0.8rem;
+}
+
+.p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+    margin-left: 0rem;
+}
+
+.p-datepicker {
+    width: auto;
+}
+
+.p-datepicker table td {
+    padding: 0rem;
+}
