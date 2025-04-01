@@ -14,17 +14,17 @@
 				</div>
 				<div class="field col-6"></div>
 				<div class="field col-12">
-					<p-table [value]="filteredItems" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]" [tableStyle]="{ 'min-width': '50rem' }">
+					<p-table [value]="filteredItems" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5, 10, 20]" [tableStyle]="{ 'min-width': '85rem' }">
 						<ng-template pTemplate="header">
 							<tr>
-								<th style="width:10%">Date</th>
-								<th style="width:40%">Item</th>
-								<th style="width:auto;text-align: right;">Amount</th>
-								<th style="width:auto;text-align: right;">Price Per Unit</th>
-								<th style="width:auto;text-align: right;">LB</th>
-								<th style="width:auto;text-align: right;">KG</th>
-								<th style="width:auto;text-align: right;">QTY</th>
-								<th style="width:auto;text-align: right;">LTR</th>
+								<th class="w-1">Date</th>
+								<th class="w-3">Item</th>
+								<th class="w-1 text-align-right">Amount</th>
+								<th class="w-1 text-align-right">Price Per Unit</th>
+								<th class="w-1 text-align-right">LB</th>
+								<th class="w-1 text-align-right">KG</th>
+								<th class="w-1 text-align-right">QTY</th>
+								<th class="w-1 text-align-right">LTR</th>
 							</tr>
 						</ng-template>
 						<p-toast />
@@ -33,12 +33,12 @@
 							<tr>
 								<td>{{item.ExpenseDate}}</td>
 								<td>{{item.Itemname}}</td>
-								<td style="width:auto;text-align: right;">{{formatCurrency(item.Amount)}}</td>
-								<td style="width:auto;text-align: right;">{{formatCurrency(item.PPU)}}</td>
-								<td style="width:auto;text-align: right;">{{formatCurrency(item.LB)}}</td>
-								<td style="width:auto;text-align: right;">{{formatCurrency(item.KG)}}</td>
-								<td style="width:auto;text-align: right;">{{formatCurrency(item.QTY)}}</td>
-								<td style="width:auto;text-align: right;">{{formatCurrency(item.LTR)}}</td>
+								<td class="text-align-right">{{formatCurrency(item.Amount)}}</td>
+								<td class="text-align-right">{{formatCurrency(item.PPU)}}</td>
+								<td class="text-align-right">{{formatCurrency(item.LB)}}</td>
+								<td class="text-align-right">{{formatCurrency(item.KG)}}</td>
+								<td class="text-align-right">{{formatCurrency(item.QTY)}}</td>
+								<td class="text-align-right">{{formatCurrency(item.LTR)}}</td>
 							</tr>
 						</ng-template>
 					</p-table>

@@ -22,22 +22,22 @@
 				<div class="field col-6 lg:col-3">
 					<label htmlFor="name2">Tax Amount</label>
                     <p-inputNumber [(ngModel)]="expense.TaxAmount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
-                    (onBlur)="calculateNetAmount()" /> 
+                    (onBlur)="calculateNetAmount()" inputStyleClass="text-align-right" /> 
 				</div>
 				<div class="field col-6 lg:col-3">
 					<label htmlFor="email2">Discount Amount</label>
                     <p-inputNumber [(ngModel)]="expense.Discount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
-                    (onBlur)="calculateNetAmount()" /> 
+                    (onBlur)="calculateNetAmount()" inputStyleClass="text-align-right" /> 
 				</div>
 				<div class="field col-6 lg:col-3">
 					<label htmlFor="name2">Gross Amount</label>
                     <p-inputNumber [(ngModel)]="expense.SubTotalAmount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
-                    [disabled]="true" /> 
+                    [disabled]="true" inputStyleClass="text-align-right" /> 
 				</div>
 				<div class="field col-6 lg:col-3">
 					<label htmlFor="email2">Net Amount</label>
                     <p-inputNumber [(ngModel)]="expense.NetAmount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
-                    [disabled]="true" /> 
+                    [disabled]="true" inputStyleClass="text-align-right" /> 
 				</div>
 			</div>
 			<div class="p-formgrid grid">
@@ -55,7 +55,7 @@
         <div class="field col-8 lg:col-4">
             <label htmlFor="itemName">Item Name</label><br />
             <p-autoComplete [(ngModel)]="itemName" [suggestions]="filteredItems" (completeMethod)="searchItem($event);"
-            [autofocus]="itemFocus" styleClass="uppercase"  showEmptyMessage="false"></p-autoComplete>
+            [autofocus]="itemFocus" inputStyleClass="uppercase"  showEmptyMessage="false"></p-autoComplete>
         </div>
         <div class="field col-4 lg:col-2">
             <label htmlFor="unit">Unit</label><br />
@@ -64,11 +64,11 @@
         </div>
         <div class="field col-6 lg:col-2">
             <label htmlFor="portion">Portion</label><br />
-            <p-inputNumber [(ngModel)]="portion" mode="decimal" inputId="portion" [useGrouping]="false" [minFractionDigits]="3" />
+            <p-inputNumber [(ngModel)]="portion" mode="decimal" inputId="portion" [useGrouping]="false" [minFractionDigits]="3" inputStyleClass="text-align-right" />
         </div>
         <div class="field col-6 lg:col-2">
             <label htmlFor="amount">Amount</label><br />
-            <p-inputNumber [(ngModel)]="amount" inputId="currency-us" mode="currency" currency="USD" locale="en-US" />
+            <p-inputNumber [(ngModel)]="amount" inputId="currency-us" mode="currency" currency="USD" locale="en-US" inputStyleClass="text-align-right" />
         </div>
         <div class="field col-6 lg:col">
             <label htmlFor="btnName">&nbsp;</label><br />
@@ -85,8 +85,8 @@
             <tr>
                 <th class="w-4">Item</th>
                 <th class="w-2">Unit</th>
-                <th class="w-2">Portion</th>
-                <th class="w-2">Amount</th>
+                <th class="w-2 text-align-right">Portion</th>
+                <th class="w-2 text-align-right">Amount</th>
                 <th>Action</th>
             </tr>
         </ng-template>
@@ -94,8 +94,8 @@
             <tr *ngIf="item.Flag != -1">
                 <td>{{ item.Itemname }}</td>
                 <td>{{ item.UnitLabel }}</td>
-                <td>{{ item.QuantityLabel }}</td>
-                <td>{{ item.AmountLabel }}</td>
+                <td class="text-align-right">{{ item.QuantityLabel }}</td>
+                <td class="text-align-right">{{ item.AmountLabel }}</td>
                 <td style="display: flex;">
                     <button pButton pRipple type="button" icon="pi pi-pen-to-square" label="Edit" class="p-button-outlined p-button-info"  (click)="edit(item)" size="small"></button>
                     &nbsp;<button pButton pRipple type="button" icon="pi pi-times" label="Delete" class="p-button-outlined p-button-danger" (click)="deleteItem($event, item)" size="small"></button>

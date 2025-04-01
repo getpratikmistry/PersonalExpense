@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { PriceHistory } from '../../models/models';
 import { DatePipe } from '@angular/common';
 import { Store } from '@ngrx/store';
@@ -7,7 +7,8 @@ import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
 @Component({
     selector: 'app-itemhistory',
     templateUrl: './itemhistory.component.html',
-    styleUrl: './itemhistory.component.scss'
+    styleUrl: './itemhistory.component.scss',
+    encapsulation: ViewEncapsulation.None // Allows styles to apply globally
 })
 export class ItemhistoryComponent implements AfterViewInit {
     @ViewChild('searchbox') searchBox!: ElementRef;

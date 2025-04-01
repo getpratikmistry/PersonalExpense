@@ -2,13 +2,13 @@
     <div class="col-12">
         <p-card header="Expense List">
 			<p-table [value]="expenses" styleClass="p-datatable-sm" [paginator]="true" [rows]="10"
-            [rowsPerPageOptions]="[5, 10, 20]" [tableStyle]="{ 'min-width': '50rem' }">
+            [rowsPerPageOptions]="[5, 10, 20]" [tableStyle]="{ 'min-width': '85rem' }">
 				<ng-template pTemplate="header">
 					<tr>
-                        <th>Date</th>
-                        <th>Company</th>
-                        <th>Location</th>
-                        <th>Amount</th>
+                        <th class="w-1">Date</th>
+                        <th class="w-4">Company</th>
+                        <th class="w-4">Location</th>
+                        <th class="w-1 text-align-right">Amount</th>
                         <th pFrozenColumn alignFrozen="right">Action</th>
 					</tr>
 				</ng-template>
@@ -19,7 +19,7 @@
 						<td>{{exp.ExpenseDate}}</td>
 						<td>{{exp.CompanyName}}</td>
 						<td>{{exp.Location}}</td>
-						<td>{{formatCurrency(exp.NetAmount)}}</td>
+						<td class="text-align-right">{{formatCurrency(exp.NetAmount)}}</td>
 						<td>
                             <span class="p-buttonset">
                                 <button pButton pRipple type="button" icon="pi pi-pen-to-square" label="Edit" class="p-button-outlined p-button-info"

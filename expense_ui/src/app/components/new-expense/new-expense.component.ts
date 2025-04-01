@@ -49,9 +49,9 @@ export class NewExpenseComponent implements OnInit {
     locations$: Observable<string[]>;
     items$: Observable<string[]>;
 
-    constructor(private route: ActivatedRoute, private expense_service: ExpenseService, private router: Router, private datepipe: DatePipe, 
-            private confirmationService: ConfirmationService, private messageService: MessageService,
-            private store: Store<{ companies: Company[], locations: string[], items: string[] }>) {
+    constructor(private route: ActivatedRoute, private expense_service: ExpenseService, private router: Router, private datepipe: DatePipe,
+        private confirmationService: ConfirmationService, private messageService: MessageService,
+        private store: Store<{ companies: Company[], locations: string[], items: string[] }>) {
         this.localDate = this.datepipe.transform(new Date().toISOString(), "yyyy-MM-dd") ?? "";
         this.localDateTime = this.datepipe.transform(new Date().toISOString().replace(",", ""), "yyyy-MM-dd HH:mm:ss") ?? "";
         this.companies$ = this.store.select('companies'); // Select employees state
@@ -122,7 +122,7 @@ export class NewExpenseComponent implements OnInit {
                         expense.ExpenseItems?.forEach((item: ExpenseItem) => {
                             item.id = item.ItemId.toString();
                         });
-                        
+
                         this.expense.CompanyName = this.companySelect.find((x: any) => {
                             return x.CompanyId == this.expense.CompanyId;
                         })?.CompanyName ?? "";
@@ -134,7 +134,7 @@ export class NewExpenseComponent implements OnInit {
             )
             .subscribe({
                 error: (err) => this.messageService.add({ key: "auth", severity: 'info', summary: 'Error', detail: err.message }),
-        });
+            });
 
         this.companies$.subscribe({
             next: (companies: Company[]) => {
@@ -164,7 +164,7 @@ export class NewExpenseComponent implements OnInit {
         this.btnName = "Update";
         this.curruntRowIndex = item.id;
         this.itemName = item.Itemname;
-        
+
         this.unit = UNIT_OPTIONS.find((x: optionUnits) => {
             return x.value == item.UnitId.toString();
         })?.value ?? UNIT_OPTIONS[0].value;
@@ -179,7 +179,7 @@ export class NewExpenseComponent implements OnInit {
             return;
         }
         const selectedItem = this.items[index];
-        
+
         this.confirmationService.confirm({
             key: "popup",
             target: event.target as EventTarget,
@@ -249,7 +249,7 @@ export class NewExpenseComponent implements OnInit {
     addDisplayInformation(obj: ExpenseItem): ExpenseItem {
         obj.UnitLabel = this.unitSelect.find(x => x.value == obj.UnitId.toString())?.option;
         obj.QuantityLabel = obj.Quantity?.toString() + " " + this.unitSelect.find(x => x.value == obj.UnitId.toString())?.displayUnit;
-        obj.AmountLabel = "$" + obj.Amount;
+        obj.AmountLabel = "$ " + obj.Amount;
 
         obj.PPU = parseFloat((obj.Amount / obj.Quantity).toFixed(3))
 
@@ -261,8 +261,10 @@ export class NewExpenseComponent implements OnInit {
     }
 
     calculateNetAmount() {
-        let totalAmt = 0;
-        this.items.forEach((acc) => { totalAmt = acc.Flag == -1 ? 0 : (acc.Amount + totalAmt); });
+        const totalAmt = this.items.reduce((sum, acc) => {
+            return (acc.Flag ?? 0) === -1 ? sum : sum + acc.Amount;
+        }, 0);
+
         this.expense.SubTotalAmount = totalAmt;
         this.expense.NetAmount = this.expense.SubTotalAmount + this.expense.TaxAmount - this.expense.Discount;
     }
@@ -305,9 +307,9 @@ export class NewExpenseComponent implements OnInit {
                         key: "dialog",
                         message: 'Data saved, Do you want to add new expense?',
                         header: 'Expense Saved',
-                        acceptIcon:"none",
-                        rejectIcon:"none",
-                        rejectButtonStyleClass:"p-button-text",
+                        acceptIcon: "none",
+                        rejectIcon: "none",
+                        rejectButtonStyleClass: "p-button-text",
                         accept: () => {
                             this.router.navigate(["/main/newexpense/0"]);
                             this.expense = this.loadnewExpense();
